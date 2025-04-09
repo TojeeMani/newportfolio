@@ -52,7 +52,23 @@ const Contact = () => {
               Kochi, Kerala, India
             </div>
             <div className="c-info-item">
-              <a href="/melbin's_resume.pdf" download="tojee_resume.pdf" className="resume-download">
+              <a 
+                href={process.env.PUBLIC_URL + "/tojee.pdf"} 
+                download="tojee_resume.pdf" 
+                className="resume-download"
+                onClick={(e) => {
+                  // Prevent default behavior
+                  e.preventDefault();
+                  // Create a link element
+                  const link = document.createElement('a');
+                  link.href = process.env.PUBLIC_URL + "/tojee.pdf";
+                  link.download = "tojee_resume.pdf";
+                  // Append to body, click, and remove
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+              >
                 Download Resume
               </a>
             </div>

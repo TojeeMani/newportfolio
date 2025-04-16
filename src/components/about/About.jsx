@@ -1,7 +1,11 @@
 import "./about.css";
 import Me from "../../img/tojee.png";
+import { ThemeContext } from "../context";
+import { useContext } from "react";
 
 const About = () => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
 
   const skills = {
     languages: ["JavaScript", "PHP", "JSX", "HTML", "CSS"],
@@ -43,7 +47,7 @@ const About = () => {
         <div style={{ marginTop: "15px" }}>
           <h1 className="a-title">Skills</h1>
           <p className="a-desc">
-            <ul>
+            <ul style={{ color: darkMode ? "#9f8ed7" : "#333" }}>
               {Object.keys(skillLabels).map((key) => (
                 <li key={key}>
                   <strong>{skillLabels[key]}:</strong> {skills[key].join(", ")}

@@ -1,6 +1,5 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import "./contact.css";
-import App from '../../'
 import Phone from "../../img/phone.png";
 import Email from "../../img/email.png";
 import Address from "../../img/address.png";
@@ -13,6 +12,11 @@ const Contact = () => {
   const [error, setError] = useState(false);
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
+
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init(process.env.REACT_APP_PUBLIC_KEY);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,11 +32,12 @@ const Contact = () => {
       )
       .then(
         (result) => {
+          console.log('Email sent successfully:', result);
           setDone(true);
           formRef.current.reset();
         },
         (error) => {
-          console.log(error.text);
+          console.error('Email sending failed:', error);
           setError(true);
         }
       );

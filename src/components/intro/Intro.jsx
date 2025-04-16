@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./intro.css";
 import Me from "../../img/tojee.png";
 import background from "../../img/bg.jpg";
+import { ThemeContext } from "../context";
 
-const Intro = ({ darkMode }) => {
+const Intro = () => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
   const containerStyle = {
-    backgroundImage: darkMode !== true ? `url(${background})` : "", // Set the background image
+    backgroundImage: !darkMode ? `url(${background})` : "",
   };
+
   return (
-    <div className="i" style={containerStyle}>
+    <div className="i" style={containerStyle} data-theme={darkMode ? 'dark' : 'light'}>
       <div className="i-left">
         <div className="i-left-wrapper">
           <h2 className="i-intro">Hey, My name is</h2>
@@ -23,8 +28,8 @@ const Intro = ({ darkMode }) => {
             </div>
           </div>
           <p className="i-desc">
-          Hey, it's me, Tojee. I'm a final year
-           MCA student with a strong focus on Full Stack Development.
+            Hey, it's me, Tojee. I'm a final year
+            MCA student with a strong focus on Full Stack Development.
           </p>
         </div>
         <svg
@@ -32,7 +37,7 @@ const Intro = ({ darkMode }) => {
           height="75"
           viewBox="0 0 75 75"
           fill="none"
-          stroke="black"
+          stroke={darkMode ? "#9f8ed7" : "black"}
           className="i-scroll"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -86,7 +91,7 @@ const Intro = ({ darkMode }) => {
       </div>
       <div className="i-right">
         <div className="i-bg"></div>
-        <img src={Me} alt="" className="i-img" />
+        <img src={Me} alt="Tojee Mani" className="i-img" />
       </div>
     </div>
   );

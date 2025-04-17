@@ -76,6 +76,7 @@
   height: 50px;
   font-size: 30px;
   font-weight: bold;
+  color: #ff6b6b;
   display: flex;
   align-items: center;
   transition: color 0.3s ease;
@@ -101,24 +102,8 @@
   color: #ffd93d;
 }
 
-[data-theme='dark'] .i-title-item:nth-child(1) {
-  color: #ff9a8b;
-}
-
-[data-theme='dark'] .i-title-item:nth-child(2) {
-  color: #a8e6cf;
-}
-
-[data-theme='dark'] .i-title-item:nth-child(3) {
-  color: #dcedc1;
-}
-
-[data-theme='dark'] .i-title-item:nth-child(4) {
-  color: #ffd3b6;
-}
-
-[data-theme='dark'] .i-title-item:nth-child(5) {
-  color: #ffaaa5;
+[data-theme='dark'] .i-title-item {
+  color: #4ecdc4;
 }
 
 .i-desc {
